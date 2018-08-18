@@ -10,7 +10,7 @@
     "serve": "http-server ./dist -p 8888 -o",
     "serve2": "http-server ./dist -p 8888"
   },
-  "author": "hwm",
+  "author": "huangweiming",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.1.0",
