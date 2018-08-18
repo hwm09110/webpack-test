@@ -75,18 +75,27 @@ module.exports = {
 			},
 			{ 
 				test: /\.(png|svg|jpg|gif)$/i, 
-				use:{ 
-					// loader:"file-loader", 
-					loader:"url-loader", 
-					options:{
-						limit:20000, //小于20kb的图片转成base64
-						// 打包生成图片的名字 
-						//name:"[hash].[ext]", 
-						// 图片的生成路径 
-						outputPath:config.imgOutputPath,
-						publicPath:'../'+config.imgOutputPath  //加上这个 html 中引用图片才能显示
-					} 
-				} 
+				use:[
+					{ 
+						// loader:"file-loader", 
+						loader:"url-loader", 
+						options:{
+							limit:20000, //小于20kb的图片转成base64
+							// 打包生成图片的名字 
+							//name:"[hash].[ext]", 
+							// 图片的生成路径 
+							outputPath:config.imgOutputPath,
+							publicPath:'../'+config.imgOutputPath  //加上这个 html 中引用图片才能显示
+						} 
+					},
+					{
+						loader:"image-webpack-loader",
+						options:{
+							bypassOnDebug: true,
+							// disable: true
+						}
+					}
+				] 
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/i,
